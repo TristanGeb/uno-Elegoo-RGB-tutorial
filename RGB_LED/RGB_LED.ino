@@ -8,6 +8,9 @@
 
 void setup()
 {
+#define baud_rate 9600
+  Serial.begin(baud_rate);
+  //setup as output
   pinMode(RED, OUTPUT);
   pinMode(GREEN, OUTPUT);
   pinMode(BLUE, OUTPUT);
@@ -24,7 +27,7 @@ int blueValue;
 // main loop
 void loop()
 {
-#define delayTime 10 // fading time between colors
+#define delayTime 100 // fading time between colors
 
   redValue = 255; // choose a value between 1 and 255 to change the color.
   greenValue = 0;
@@ -44,6 +47,7 @@ void loop()
     // analogWrite(GREEN, 255 - greenValue);
     analogWrite(RED, redValue);
     analogWrite(GREEN, greenValue);
+    Serial.print(redValue);Serial.print(",");Serial.print(greenValue);Serial.print(",");Serial.print(blueValue);Serial.println("\n");
     delay(delayTime);
   }
 
@@ -60,6 +64,8 @@ void loop()
     // analogWrite(BLUE, 255 - blueValue);
     analogWrite(GREEN, greenValue);
     analogWrite(BLUE, blueValue);
+        Serial.print(redValue);Serial.print(",");Serial.print(greenValue);Serial.print(",");Serial.print(blueValue);Serial.println("\n");
+
     delay(delayTime);
   }
 
@@ -77,6 +83,8 @@ void loop()
     // analogWrite(RED, 255 - redValue);
     analogWrite(BLUE, blueValue);
     analogWrite(RED, redValue);
+        Serial.print(redValue);Serial.print(",");Serial.print(greenValue);Serial.print(",");Serial.print(blueValue);Serial.println("\n");
+
     delay(delayTime);
   }
 }
